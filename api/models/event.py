@@ -7,7 +7,9 @@ class Event(models.Model):
     title = models.TextField()
     description = models.TextField()
     item_type = models.CharField(max_length=100)
-    item_max = models.PositiveSmallIntegerField()
+    item_max = models.PositiveSmallIntegerField(
+        help_text="Soft max for slugs to crawl towards"
+    )
 
     def save(self, *args, **kwargs):
         if not self.id:
