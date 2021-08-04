@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-kssn+#9+1e^xshog)xfirqs-3#-nq(v!obeymlzfhbz(suyss&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["leaderboard.koldfusion.xyz"]
 
 
 # Application definition
