@@ -6,9 +6,10 @@ from rest_framework import permissions
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Stats API",
+        title="LAML API",
         default_version="v1",
-        description="A basic API backend for Localized Stats",
+        description="A basic API backend for Look At My Leaderboard.\n\nPlease note all routes are ratelimited at "
+        "`30/minute`",
         terms_of_service="https://koldfusion.xyz/",
         contact=openapi.Contact(email="ethan@koldfusion.xyz"),
     ),
