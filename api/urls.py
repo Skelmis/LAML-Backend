@@ -2,15 +2,15 @@ from django.urls import path, include
 
 from api.views import (
     EventViewSet,
-    PlayerViewSet,
     SingleEventViewSet,
-    SinglePlayerViewSet,
+    PlayerViewSet,
 )
 
 urlpatterns = [
     path("", EventViewSet.as_view()),
-    path("event/", EventViewSet.as_view()),
-    path("event/<int:pk>/", SingleEventViewSet.as_view()),
-    path("player/", PlayerViewSet.as_view()),
-    path("player/<int:pk>/", SinglePlayerViewSet.as_view()),
+    path("events/", EventViewSet.as_view()),
+    path("event/<slug:slug>/", SingleEventViewSet.as_view()),
+    path("event/<slug:slug>/players/", PlayerViewSet.as_view()),
+    path("event/<slug:slug>/player/<str:username>/", PlayerViewSet.as_view()),
+    path("event/<slug:slug>/player/<str:username>/item", PlayerViewSet.as_view()),
 ]
