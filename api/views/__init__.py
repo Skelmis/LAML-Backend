@@ -1,1 +1,1 @@
-from .event import EventViewSet, SingleEventViewSet, PlayerViewSet
+from .event import EventViewSet, SingleEventViewSet, PlayerViewSet, ItemViewSet

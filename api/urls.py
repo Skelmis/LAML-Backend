@@ -4,6 +4,7 @@ from api.views import (
     EventViewSet,
     SingleEventViewSet,
     PlayerViewSet,
+    ItemViewSet,
 )
 
 urlpatterns = [
@@ -12,5 +13,9 @@ urlpatterns = [
     path("event/<slug:slug>/", SingleEventViewSet.as_view()),
     path("event/<slug:slug>/players/", PlayerViewSet.as_view()),
     path("event/<slug:slug>/player/<str:username>/", PlayerViewSet.as_view()),
-    path("event/<slug:slug>/player/<str:username>/item", PlayerViewSet.as_view()),
+    path("event/<slug:slug>/player/<str:username>/items/", ItemViewSet.as_view()),
+    path(
+        "event/<slug:slug>/player/<str:username>/item/<int:amount>",
+        ItemViewSet.as_view(),
+    ),
 ]
