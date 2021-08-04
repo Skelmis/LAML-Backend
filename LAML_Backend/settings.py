@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-kssn+#9+1e^xshog)xfirqs-3#-nq(v!obeymlzfhbz(suyss&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["leaderboard.koldfusion.xyz"]
+ALLOWED_HOSTS = ["leaderboard.koldfusion.xyz", "127.0.0.1"]
 
 
 # Application definition
@@ -117,3 +117,12 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# REST FRAMEWORK
+REST_FRAMEWORK = {
+    "DEFAULT_THROTTLE_CLASSES": [
+        "rest_framework.throttling.AnonRateThrottle",
+        "rest_framework.throttling.UserRateThrottle",
+    ],
+    "DEFAULT_THROTTLE_RATES": {"anon": "30/minute", "user": "1/second"},
+}
