@@ -8,6 +8,7 @@ from api.serializers import EventSerializer
 
 
 class EventViewSet(generics.ListCreateAPIView):
+    throttle_scope = "api"
     queryset = Event.objects.all()
     serializer_class = EventSerializer
 
@@ -15,6 +16,7 @@ class EventViewSet(generics.ListCreateAPIView):
 class SingleEventViewSet(
     api.UpdateIntegrityCheck, generics.RetrieveUpdateDestroyAPIView
 ):
+    throttle_scope = "api"
     queryset = Event.objects.all()
     serializer_class = EventSerializer
     lookup_field = "slug"

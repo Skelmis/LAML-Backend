@@ -121,8 +121,19 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # REST FRAMEWORK
 REST_FRAMEWORK = {
     "DEFAULT_THROTTLE_CLASSES": [
-        "rest_framework.throttling.AnonRateThrottle",
-        "rest_framework.throttling.UserRateThrottle",
+        "rest_framework.throttling.ScopedRateThrottle",
     ],
-    "DEFAULT_THROTTLE_RATES": {"anon": "30/minute", "user": "1/second"},
+    "DEFAULT_THROTTLE_RATES": {
+        "api": "30/minute",
+    },
+}
+
+# DOCS
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "Basic": {
+            "type": "basic",
+            "description": "This route has no authentication required.",
+        }
+    }
 }

@@ -8,6 +8,8 @@ from api.serializers import ItemSerializer
 
 
 class ItemViewSet(generics.GenericAPIView):
+    throttle_scope = "api"
+
     def get_queryset(self):
         return Player.objects.all()
 
