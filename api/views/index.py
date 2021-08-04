@@ -23,6 +23,9 @@ def sitemap_view(request):
         if request_filter and not joined_url.startswith(request_filter):
             continue
 
+        # joined_url = joined_url.replace("<slug:slug>", "slug_here")
+        # joined_url = joined_url.replace("<str:username>", "username_here")
+
         urls.append(joined_url)
 
     urls = sorted(urls)
