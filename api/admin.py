@@ -19,6 +19,7 @@ class EventAdmin(admin.ModelAdmin):
 class PlayerAdmin(admin.ModelAdmin):
     list_display = ("get_slug", "get_event_pk", "username")
     search_fields = ("username",)
+    actions = (delete_selected_no_conf,)
 
     def get_slug(self, player):
         return player.event.slug
@@ -30,13 +31,12 @@ class PlayerAdmin(admin.ModelAdmin):
 
     get_event_pk.short_description = "Event pk"
 
-    actions = (delete_selected_no_conf,)
-
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     list_display = ("get_player_username", "get_event_slug", "amount")
     search_fields = ("get_player_username", "amount", "get_event_slug")
+    actions = (delete_selected_no_conf,)
 
     def get_player_username(self, item):
         return item.player.username
