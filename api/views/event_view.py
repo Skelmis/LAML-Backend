@@ -1,4 +1,6 @@
-from rest_framework import generics
+from django.db import IntegrityError
+from rest_framework import generics, status
+from rest_framework.response import Response
 
 from api.models import Event
 from api.serializers import EventSerializer
@@ -12,6 +14,12 @@ class EventViewSet(generics.ListCreateAPIView):
 class SingleEventViewSet(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+
+    def perform_update(self, serializer):
+        try:
+            serializer.save()
+        except IntegrityError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 """
