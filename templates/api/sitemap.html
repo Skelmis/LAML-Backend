@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Sitemap{% endblock %}
+{% block content %}
+<b>
+    Sitemap
+</b>
+<br>
+
+{% for url in all_urls %}
+    <a href="../{{ url }}">{{ url }}</a><br>
+{% endfor %}
+<br>
+<button onclick="location.href = '.';" id="myButton" class="float-left submit-button">
+    Clear filter
+</button>
+{% endblock %}
