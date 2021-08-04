@@ -7,3 +7,8 @@ from api.serializers import PlayerSerializer
 class PlayerViewSet(generics.ListCreateAPIView):
     queryset = Player.objects.all()
     serializer_class = PlayerSerializer
+
+
+class SinglePlayerViewSet(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Player.objects.all()
+    serializer_class = PlayerSerializer

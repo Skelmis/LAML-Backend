@@ -4,7 +4,7 @@ from .event import Event
 
 
 class Player(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, editable=False)
     username = models.TextField()
 
     class Meta:

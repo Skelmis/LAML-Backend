@@ -9,6 +9,11 @@ class EventViewSet(generics.ListCreateAPIView):
     serializer_class = EventSerializer
 
 
+class SingleEventViewSet(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
+
+
 """
 class EventViewSet(generics.GenericAPIView, mixins.CreateModelMixin):
     def create(self, request, *args, **kwargs):
