@@ -28,7 +28,13 @@ class ItemViewSet(generics.GenericAPIView):
 
         return Response(x.data)
 
-    def post(self, request, slug, username, amount):
+    def post(self, request, slug, username, amount=None):
+        if not amount:
+            return Response(
+                {"detail": "Expected amount as a url argument"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
         try:
             player = Player.objects.get(username=username)
         except Player.DoesNotExist:

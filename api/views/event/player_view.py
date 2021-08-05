@@ -30,7 +30,13 @@ class PlayerViewSet(generics.GenericAPIView):
 
         return Response(x.data)
 
-    def post(self, request, slug, username):
+    def post(self, request, slug, username=None):
+        if not username:
+            return Response(
+                {"detail": "Expected username as a url argument"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
         try:
             event = Event.objects.get(slug=slug)
         except Event.DoesNotExist:

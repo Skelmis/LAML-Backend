@@ -1,2 +1,2 @@
-from .event import EventViewSet, SingleEventViewSet, PlayerViewSet, ItemViewSet
+from .event import EventViewSet, PlayerViewSet, ItemViewSet
 from .index import sitemap_view
