@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,9 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://leaderboard.koldfusion.xyz/">
     <meta property="og:description" content="A simplistic website devoted to collecting and displaying stats">
+
+    <!-- Static files -->
+    <link rel="stylesheet" href="{% static 'base/style.scss' %}">
 </head>
 <body>
 {% block content %}{% endblock %}
