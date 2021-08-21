@@ -1,4 +1,4 @@
-{% load static %}
+{% load sass_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +12,7 @@
     <meta property="og:description" content="A simplistic website devoted to collecting and displaying stats">
 
     <!-- Static files -->
-    <link rel="stylesheet" type="text/css" href="{% static 'base/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'base/_style.scss' %}">
 </head>
 <body>
 {% block content %}{% endblock %}

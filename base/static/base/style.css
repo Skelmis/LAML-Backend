@@ -41,6 +41,7 @@ body {
 }
 .leaderboard ol {
   counter-reset: leaderboard;
+  list-style: none;
 }
 .leaderboard ol li {
   position: relative;

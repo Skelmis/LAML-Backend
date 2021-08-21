@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "base",
     "rest_framework",
     "drf_yasg",
+    "sass_processor"
 ]
 
 MIDDLEWARE = [
@@ -143,6 +144,12 @@ SWAGGER_SETTINGS = {
 # DEPLOYMENT
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
 
 # CSRF Stuff
 CSRF_COOKIE_SECURE = True
