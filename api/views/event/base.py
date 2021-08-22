@@ -33,7 +33,7 @@ class EventViewSet(generics.GenericAPIView):
         if not slug:
             return Response(
                 {"detail": "Expected slug as a url argument"},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
         serializer = EventSerializer(data=request.data)
@@ -42,5 +42,4 @@ class EventViewSet(generics.GenericAPIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
         serializer.save(slug=slug)
-        return Response(status=status.HTTP_201_CREATED)
-
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
