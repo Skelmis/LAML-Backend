@@ -16,7 +16,7 @@ class ItemViewSet(generics.GenericAPIView):
     def get_serializer_class(self):
         return ItemSerializer
 
-    def get(self, request, slug, username, amount=None):
+    def get(self, request, slug, username):
         try:
             player = Player.objects.get(username=username)
         except Player.DoesNotExist:
@@ -28,15 +28,16 @@ class ItemViewSet(generics.GenericAPIView):
 
         return Response(x.data)
 
-    def post(self, request, slug, username, amount=None):
+    def post(self, request, slug, username):
+        amount = request.query_params.get("amount")
         if not amount:
             return Response(
                 {"detail": "Expected amount as a url argument"},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
         try:
-            player = Player.objects.get(username=username)
+            player = Player.objects.get(username=username, event__slug=slug)
         except Player.DoesNotExist:
             return ValidationError
 
@@ -46,4 +47,7 @@ class ItemViewSet(generics.GenericAPIView):
         except IntegrityError:
             raise ValidationError
 
-        return Response(status=status.HTTP_201_CREATED)
+        return Response(
+            {"amount": amount, "time_created": item.time_created},
+            status=status.HTTP_201_CREATED,
+        )

@@ -45,10 +45,9 @@ class PlayerViewSet(generics.GenericAPIView):
         try:
             player = Player.objects.create(event=event, username=username)
             player.save()
-        except IntegrityError:
+        except IntegrityError as e:
             raise ValidationError
 
-        x = PlayerSerializer(data=player)
-        x.is_valid()
-
-        return Response(x.data, status=status.HTTP_201_CREATED)
+        return Response(
+            {"username": username, "item_count": 0}, status=status.HTTP_201_CREATED
+        )

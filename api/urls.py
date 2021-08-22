@@ -15,7 +15,7 @@ urlpatterns = [
     path("event/<slug:slug>/player/<str:username>/", PlayerViewSet.as_view()),
     path("event/<slug:slug>/player/<str:username>/items/", ItemViewSet.as_view()),
     path(
-        "event/<slug:slug>/player/<str:username>/item/<int:amount>",
+        "event/<slug:slug>/player/<str:username>/item/create/",
         ItemViewSet.as_view(),
     ),
 ]
