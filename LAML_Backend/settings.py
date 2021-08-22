@@ -20,7 +20,10 @@ if str(os_debug) == "1":
 else:
     DEBUG = False
 
-# ALLOWED_HOSTS = ["leaderboard.koldfusion.xyz", "127.0.0.1", "*"]
+# ALLOWED_HOSTS = ["leaderboard.koldfusion.xyz", "127.0.0.1"]
+# CORS_ORIGIN_ALLOW_ALL = False
+# CORS_ORIGIN_WHITELIST = ("http://localhost:3000", "app.koldfusion.xyz")
+
 
 ALLOWED_HOSTS = ["*"]
 CORS_ORIGIN_ALLOW_ALL = True
