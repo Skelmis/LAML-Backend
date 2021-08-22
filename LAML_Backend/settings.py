@@ -20,7 +20,7 @@ if str(os_debug) == "1":
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ["leaderboard.koldfusion.xyz", "127.0.0.1"]
+ALLOWED_HOSTS = ["leaderboard.koldfusion.xyz", "127.0.0.1", "*"]
 
 
 # Application definition
