@@ -22,11 +22,11 @@ else:
 
 ALLOWED_HOSTS = ["leaderboard.koldfusion.xyz", "127.0.0.1"]
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
+CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
-    "app.koldfusion.xyz",
     "https://localhost:3000",
-)
+    "https://lookatmyleaderboard.quest",
+]
 
 
 # ALLOWED_HOSTS = ["*"]
