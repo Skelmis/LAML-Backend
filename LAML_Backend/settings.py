@@ -20,7 +20,10 @@ if str(os_debug) == "1":
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ["leaderboard.koldfusion.xyz", "127.0.0.1", "*"]
+# ALLOWED_HOSTS = ["leaderboard.koldfusion.xyz", "127.0.0.1", "*"]
+
+ALLOWED_HOSTS = ["*"]
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -35,11 +38,13 @@ INSTALLED_APPS = [
     "api",
     "rest_framework",
     "drf_yasg",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "corsheaders.middleware.CorsMiddleware"
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
