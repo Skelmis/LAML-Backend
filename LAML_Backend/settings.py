@@ -22,12 +22,15 @@ else:
 
 ALLOWED_HOSTS = ["leaderboard.koldfusion.xyz", "127.0.0.1"]
 # CORS_ORIGIN_ALLOW_ALL = False
-# CORS_ORIGIN_WHITELIST = [
-#    "http://localhost:3000",
-#    "https://localhost:3000",
-#    "https://lookatmyleaderboard.quest",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://lookatmyleaderboard.quest",
+]
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "https://lookatmyleaderboard.quest",
+]
 
 # ALLOWED_HOSTS = ["*"]
 # CORS_ORIGIN_ALLOW_ALL = True
@@ -45,13 +48,14 @@ INSTALLED_APPS = [
     "api",
     "rest_framework",
     "drf_yasg",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
-    "api.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
