@@ -34,7 +34,7 @@ class PlayerViewSet(generics.GenericAPIView):
         if not username:
             return Response(
                 {"detail": "Expected username as a url argument"},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
         try:
@@ -48,4 +48,7 @@ class PlayerViewSet(generics.GenericAPIView):
         except IntegrityError:
             raise ValidationError
 
-        return Response(status=status.HTTP_201_CREATED)
+        x = PlayerSerializer(data=player)
+        x.is_valid()
+
+        return Response(x.data, status=status.HTTP_201_CREATED)
