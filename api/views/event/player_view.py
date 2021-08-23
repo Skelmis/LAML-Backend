@@ -25,8 +25,8 @@ class PlayerViewSet(generics.GenericAPIView):
         x = PlayerSerializer(data=players, many=True)
         x.is_valid()
 
-        if isinstance(x.data, list) and len(x.data) == 1:
-            return Response(x.data[0])
+        # if isinstance(x.data, list) and len(x.data) == 1:
+        #    return Response(x.data[0])
 
         return Response(x.data)
 
