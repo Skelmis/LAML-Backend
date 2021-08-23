@@ -41,6 +41,12 @@ class ItemViewSet(generics.GenericAPIView):
         except Player.DoesNotExist:
             return ValidationError
 
+        if player.is_finished:
+            return Response(
+                {"status": "User is finished."},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
         try:
             item = Item.objects.create(player=player, amount=amount)
             item.save()

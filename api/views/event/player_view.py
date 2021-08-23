@@ -42,6 +42,12 @@ class PlayerViewSet(generics.GenericAPIView):
         except Event.DoesNotExist:
             raise ValidationError
 
+        if event.is_finished:
+            return Response(
+                {"status": "This event is finished"},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
         try:
             player = Player.objects.create(event=event, username=username)
             player.save()
