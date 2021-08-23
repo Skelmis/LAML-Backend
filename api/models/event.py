@@ -10,6 +10,7 @@ class Event(models.Model):
     item_max = models.PositiveSmallIntegerField(
         help_text="Soft max for slugs to crawl towards"
     )
+    is_finished = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         if not self.id:
