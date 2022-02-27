@@ -3,7 +3,7 @@ from django.utils.text import slugify
 
 
 class Event(models.Model):
-    slug = models.SlugField(max_length=25, unique=True, editable=False)
+    slug = models.SlugField(max_length=25, unique=True)
     title = models.TextField()
     description = models.TextField()
     item_type = models.CharField(max_length=100)
